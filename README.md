@@ -1,6 +1,7 @@
 # 3UTReQTL_islets
 
-Code and Jupyter notebooks related to ###reference to paper###.
+This repository describes how to extract 3'UTR genotype information for cell type-specific eQTL analysis from single cell RNA-seq datasets processed with SMART-seq.
+These 3'UTR eQTLs can then be used to study miRNA binding gain or loss.
 
 ### This repository provides the codes to:
 * Process SMART-seq single cell RNA-seq (scRNA-seq) FASTQ files into BAM alignment files
