@@ -5,7 +5,7 @@
 # merge a list of files (e.g. fastq files) into a single output file, automatic gzipping if the original file input was gzipped. 
 
 ### Input variables ###
-if [ $# -ne 2 ]
+if [ $# -ne 3 ]
 then
     echo "Usage: $0 <file list txt> <output name> -f"
     echo "  1) Headerless text file with a list of files to merge"
