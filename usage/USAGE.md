@@ -39,7 +39,7 @@ Trim the fastq files
 trim_galore <input fastq file>
 ```
 
-align the FASTQ files to the reference genome using STAR
+align the trimmed FASTQ files to the reference genome using STAR
 ```
 ./genome_alignment.sh <input fastq file> <output prefix> <sampleID> /path/to/indexed_genome
 ```
