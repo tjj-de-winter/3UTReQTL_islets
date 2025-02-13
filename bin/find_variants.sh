@@ -36,7 +36,7 @@ threads=8 # Adjust as needed
 
 ### Code ###
 
-samplename=$(${p2samtools} view $inbam | head -n 1 | grep "RG:" | awk -F "RG:Z:" '{print $2}')
+samplename=$(${p2samtools} view -H $inbam | grep "@RG" | awk -F "SM:" '{print $2}' | awk -F "\t" '{print $1}')
 
 outbam=${outpath}/SNP_call_${samplename}
 bam=${outbam}/${samplename}.bam
