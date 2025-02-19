@@ -76,7 +76,7 @@ Perform genotyping according to the GATK pipeline to produce GVCFs
 ```
 Genotype the sample-specific GVCF files and generate a VCF
 ```
-./genotype_variants.sh /path/to/GVCF <cohort name> <Genome FASTA file> <dbSNP VCF> <output prefix>
+./genotype_variants.sh /path/to/GVCF <cohort name> <Genome FASTA file> <dbSNP VCF> /path/to/out_folder
 ```
 **_EXAMPLE:_**
 ```
