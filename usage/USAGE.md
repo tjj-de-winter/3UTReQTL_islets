@@ -82,14 +82,17 @@ Genotype the sample-specific GVCF files and generate a VCF
 ```
 ├── /path/to/GVCF_folder/
 │   ├── sampleA.g.vcf.gz
+│   ├── sampleA.g.vcf.gz.tbi
 │   ├── sampleB.g.vcf.gz
+│   ├── sampleB.g.vcf.gz.tbi
 │   ├── sampleC.g.vcf.gz
+│   ├── sampleC.g.vcf.gz.tbi
 ...
 ```
 
 Select called variants from a VCF that map to the 3'UTR and annotate the variants with SNP rsID and gene name
 ```
-./VCF_filtering_annotation.sh <VCF file> <BED 3'UTR annotation file> <dbSNP VCF> <output refix> /path/to/out_folder
+./VCF_filtering_annotation.sh <VCF file> <BED 3'UTR annotation file> <dbSNP VCF> <output prefix> /path/to/out_folder
 ```
 
 ### Compute eQTLs
