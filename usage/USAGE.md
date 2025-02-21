@@ -105,7 +105,7 @@ python generate_gene_filter.py --h5ad <H5AD file> --celltype_header <celltype he
 Generate a matrix containing genotypes (encoded as integers) of gene-annotated variants per sample from the gene and SNPID annotated 3'UTR VCF.
 Output is a comma-separated file.
 ```
-python variant_matrix.py --VCF <VCF file> --outprefix <output prefix> --outdir /path/to/out_folder
+python variant_matrix.py --vcf <VCF file> --outprefix <output prefix> --outdir /path/to/out_folder
 ```
 
 Generate a matrix with the raw gene expression for each sample present and normalize the raw counts using DESeq
