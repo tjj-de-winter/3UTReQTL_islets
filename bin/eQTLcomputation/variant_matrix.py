@@ -12,10 +12,13 @@ warnings.simplefilter(action='ignore', category=Warning)
 
 ### Input variables ###
 
+parser = argp.ArgumentParser(description='Generates a variant matrix, encoding the SNP as the gene dosage of the alternative allele')
 parser.add_argument('--vcf', help = 'VCF file path (supports wildcards).', type = str, default = '/Users/twanw/Documents/LUMC/projects/3UTRpancreas/Data_3UTR_project/revisions/VCF/*.smartseqPancreasv2_3UTR_gene_annotated_MAF0.07.vcf')
 parser.add_argument('--h5ad', help = 'Input .h5ad file path.', type = str, default = '/Users/twanw/Documents/LUMC/projects/3UTRpancreas/Data_3UTR_project/revisions/notebook/eQTL_revision.h5ad')
 parser.add_argument('--celltype', help = 'Cell type to subset (e.g., beta-cells).', type = str, default = 'beta-cells')
 parser.add_argument('--group', help = 'Group label to subset (e.g., ND).', type = str, default = 'ND')
+parser.add_argument('--outdir', default='.',help='output path')
+parser.add_argument('--prefix', default='.',help='filename prefix')
 
 args = parser.parse_args()
 
@@ -23,6 +26,13 @@ VCFfile = args.vcf
 h5ad_file = args.h5ad
 cell_type = args.celltype
 group = args.group
+outdir = args.outdir
+prefix = args.prefix
+
+if not os.path.exists(outdir):
+        os.makedirs(outdir)
+
+adata = sc.read_h5ad(h5ad_file)
 
 adata_sub = adata[(adata.obs['Cell_type'] == cell_type)& (adata.obs['Group'] == group)]
 
@@ -117,4 +127,12 @@ for VCFi in VCFfiles:
 		            else:
 		            	variant_matrix = pd.concat([variant_matrix, dict_to_df(allele_dosage_dict, variant)], axis=1)
 
-variant_matrix.to_csv(f'{cell_type}_{group}_variant_matrix.csv')
+outfile = f'{cell_type}_{group}_variant_matrix.csv'
+
+if prefix != None:
+    outfile = prefix + "_" + outfile
+
+if outdir != None:
+    outfile = os.path.join(outdir, outfile)
+
+variant_matrix.to_csv(outfile)
